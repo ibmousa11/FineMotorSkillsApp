@@ -1,0 +1,115 @@
+//Wordlist + global variables
+let feedback = ''
+let wordBank = [
+  "Cow",
+  "Their",
+  "Accomplish",
+  "Evaluate",
+  "Announce",
+  "Earthquake",
+  "Quotation",
+  "Exclamation",
+  "Qualify",
+  "Percentage",
+  "Battery",
+  "Navigation",
+  "Airport",
+  "Demanding",
+  "House",
+  "Dog",
+  "Movie",
+  "Lady",
+  "Box",
+  "Dance",
+  "Ran",
+  "Tired",
+  "Green",
+  "Tree",
+  "Report",
+  "Discover",
+  "Battery",
+  "Search",
+  "Respect",
+  "Donkey",
+  "Lovely",
+  "Focus",
+  "Positive",
+  "Repeat",
+  "Protect", 
+  "Portable",
+  "Solitary",
+  "Antique",
+  "Administration",
+  "Journal",
+  "Geography",
+  "Observe",
+  "Tragedy",
+  "Missile",
+  "Ignorance",
+  "Lightning",
+  "Grateful",
+  "Conventional",
+  "Bountiful",
+  "Eccentric",
+  ]  
+
+ let currentWord = '';
+
+function setup() {
+  currentWord = random(wordBank);
+  //Images
+  createCanvas(750, 500);
+  cartoonKid=loadImage('cartoonKid.png');
+  cartoonKid2=loadImage('cartoonKid2.png');
+  fp=loadImage('finger-position.jpg');
+  redX=loadImage('redX.png');
+  bg=loadImage('typingBackground.jpg');
+  cloud=loadImage('cloud2.png');
+  //Inputs
+   input = createInput();
+  input.position(285, 300);
+  //Buttons
+  button = createButton('Submit');
+  button.position(350, 325);
+  button.mousePressed(inputFeedback);  
+  button2 = createButton('Next Word');
+  button2.position(460,300);
+  button2.mousePressed(setup);
+}
+
+function draw() {
+  //Images + text
+  background(bg);
+  image(fp,285,350,200,125)
+  rect(0,0,30,30);
+  image(redX,0,0,30,30);
+  image(cartoonKid2,190,250,75,130);
+  image(cartoonKid,590,250,70,130);
+  image(cloud, 285,190,200,100);
+  stroke("blue");
+  textSize(25);
+  textAlign(CENTER);
+  text("Enter the words that appear in the cloud",380,70);
+  textAlign(CENTER);
+  textSize(15);
+  wordInACloud(currentWord);
+  getItem(feedback);
+  textSize(25);
+  stroke("Orange")
+  text(feedback, 350,140,70,70)
+}
+  //Code for feedback to the user
+function inputFeedback(){
+  if(input.value() == currentWord){
+    textAlign(CENTER);
+    textSize(35);
+    feedback = 'Correct!';
+  }else{
+    feedback = 'Incorrect';
+  }
+  getItem(feedback);
+}
+
+function wordInACloud(word){
+  text(word,350,240,70,70);
+}
