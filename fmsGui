@@ -1,0 +1,56 @@
+function setup() {
+  createCanvas(750, 500);
+  fruitBasket= loadImage('fruitBasket.png');
+  keyboard=loadImage('Keyboard.png');
+  alphabet=loadImage('Alphabet.png');
+  boy=loadImage('Boy.png');
+  girl=loadImage('Girl.png');
+  woodBackground=loadImage('WoodBackground.jpg');
+}
+
+
+function draw() {
+  background(woodBackground);
+  
+  strokeWeight(3);
+  fill("white");
+  
+  stroke("red");
+  rect(50,175,150,150,20);
+  
+  stroke("green");
+  rect(300,175,150,150,20);
+  
+  stroke("blue");
+  rect(550,175,150,150,20);
+  
+  fill("lightBlue");
+  textAlign(CENTER);
+  textSize(55);
+  text("FMS Chronicles", 375,75)
+  
+  textAlign(CENTER);
+  textSize(35);
+  text("3 Educational and Fun Activities", 375,425);
+  
+  textAlign(CENTER);
+  textSize(15);
+  text("Letter Tracing", 125,210);
+  
+  textAlign(CENTER);
+  textSize(15);
+  text("Typing Challenge", 375,210);
+  
+  textAlign(CENTER);
+  textSize(15);
+  text("Fruit Fall", 625,210);
+  
+  
+  image(fruitBasket,575,220,100,100);      
+  image(keyboard,310,230,130,65);
+  image(alphabet,60,230,130,65);
+  
+  image(boy,625,10,100,125);
+  image(girl,0,5,100,125);
+}
+
