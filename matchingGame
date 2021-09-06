@@ -1,0 +1,110 @@
+var scoreBoard=0;
+var timerBoolean=false;
+var timer = 40;
+let watermelon;
+let orange;
+let banana;
+var imgs;
+var n=0;
+var x;
+var y;
+var fruitX= 200;
+var fruitY= 100;
+
+function setup() { 
+  createCanvas(750, 500);
+  mountainBackground = loadImage('mountainBackgroundpic2.png');
+  bucket=loadImage('bucket.png');
+  watermelon=loadImage('watermelon.png');
+  orange=loadImage('orange.png');
+  banana=loadImage('banana.png');
+  button = createButton("Start")
+  button.size(100,50);
+  button.position(330, 150);
+  
+  
+  imgs=[banana, orange, watermelon];
+}
+
+ function mouseDragged() {
+  if ((mouseX > fruitX - 50) && (mouseX < fruitX + 50)) {
+    if ((mouseY > fruitY - 50) && (mouseY < fruitY + 50)) {
+      fruitX = mouseX-30;
+      fruitY = mouseY-35;
+    }
+  }
+}
+
+function draw() {
+  background(mountainBackground);
+  image(bucket,75,400,100,100);
+  image(watermelon,110,435,50,50);
+  image(bucket,325,400,100,100);
+  image(orange,360,435,50,50);
+  image(bucket,575,400,100,100);
+  image(banana,610,430,50,50);
+  textFont("Boulder");
+  textSize(32);
+  fill("white");
+  text("Score: " + scoreBoard, 55, 100);
+  button.mousePressed(startTimer)
+  text("Time: " + timer,380,25);
+  textAlign(CENTER);
+  if (timerBoolean == false){
+  text("Slowly place the fruit into its \ncorresponing bucket and get to a \nscore of 10 before the timer runs out!", 375,300);
+  }
+  
+ if (timer == 0 && scoreBoard<10){
+    text("You Lost :(",375,175);
+    noLoop()
+  }
+  
+  if (timerBoolean == true){
+    loop();
+    button.remove();
+    if(frameCount%60==0 && timer>0){
+      timer--;
+    }
+  }
+  image(imgs[n],fruitX,fruitY,50,50);
+  
+  if (scoreBoard == 10){
+    text("YOU WON!",375,175);
+    noLoop()
+  }
+    
+  if(n==0){
+    if ((fruitX > 540) && (fruitX < 650)) {
+      if ((fruitY > 375) && (fruitY < 500)) {
+        scoreBoard++;
+        fruitX=random(0,700);
+        fruitY=random(0,250);
+        n=int (random(0,3));
+      }
+    }
+  }    
+  if(n==1){
+    if ((fruitX > 300) && (fruitX < 420)) {
+      if ((fruitY > 375) && (fruitY < 500)) {
+        scoreBoard++;
+        fruitX=random(0,700);
+        fruitY=random(0,250);
+        n=int (random(0,3));
+      }
+    }
+  }    
+  if(n==2){
+    if ((fruitX > 50) && (fruitX < 170)) {
+      if ((fruitY > 375) && (fruitY < 500)) {
+        scoreBoard++;
+        fruitX=random(0,700);
+        fruitY=random(0,250);
+        n=int (random(0,3));
+      }
+    }
+  }
+}
+
+function startTimer(){
+  timerBoolean=true;
+}
